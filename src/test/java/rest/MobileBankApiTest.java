@@ -1,24 +1,23 @@
 package rest;
 
-import org.junit.jupiter.api.Test;
 
+import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasSize;
+
 
 class MobileBankApiTest {
     @Test
-    void shouldReturnDemoAccounts() {
-        // Given - When - Then
-// Предусловия
+    void shouldReturnDemoAccounts () {
         given()
                 .baseUri("https://postman-echo.com")
-                .body("some data") // отправляемые данные (заголовки и query можно выставлять аналогично)
-// Выполняемые действия
+                .body("id:3")
                 .when()
                 .post("/post")
-// Проверки
                 .then()
                 .statusCode(200)
-                .body(/* --> ваша проверка здесь <-- */)
-        ;
+                .body("data", equalTo("id:1"));
     }
+
 }
