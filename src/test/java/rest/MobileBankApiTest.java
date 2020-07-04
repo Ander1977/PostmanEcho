@@ -17,7 +17,19 @@ class MobileBankApiTest {
                 .post("/post")
                 .then()
                 .statusCode(200)
-                .body("data", equalTo("id:1"));
+                .body("data", equalTo("id:3"));
+    }
+
+    @Test
+    void shouldReturnDemoAccounts2 () {
+        given()
+                .baseUri("https://postman-echo.com")
+                .body("currency:RUB")
+                .when()
+                .post("/post")
+                .then()
+                .statusCode(200)
+                .body("data", equalTo("currency:RUB"));
     }
 
 }
